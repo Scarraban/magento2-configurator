@@ -10,6 +10,7 @@ namespace CtiDigital\Configurator\Test\Unit\Processor;
 use CtiDigital\Configurator\Api\LoggerInterface;
 use CtiDigital\Configurator\Component\Processor\SqlSplitProcessor;
 use CtiDigital\Configurator\Model\Logging;
+use Exception;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
@@ -92,7 +93,7 @@ class SqlSplitProcessorTest extends \PHPUnit\Framework\TestCase
         $this->mockConnection
             ->expects($this->any())
             ->method('query')
-            ->willThrowException(new \Exception($exMsg));
+            ->willThrowException(new Exception($exMsg));
 
         $this->mockLogger
             ->expects($this->at(1))
